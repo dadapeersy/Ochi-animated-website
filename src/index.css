@@ -1,0 +1,51 @@
+@import "tailwindcss";
+@import 'locomotive-scroll/dist/locomotive-scroll.css';
+
+.btn-31 {
+  position: relative;
+  overflow: hidden;
+  background: black;
+  color: white;
+  transition: color 0.3s ease;
+}
+
+.btn-31::before {
+  --progress: 100%;
+  content: "";
+  position: absolute;
+  inset: 0;
+  background: white;
+  clip-path: polygon(
+    100% 0,
+    var(--progress) var(--progress),
+    0 100%,
+    100% 100%
+  );
+  transition: clip-path 0.3s ease;
+  z-index: 0;
+}
+
+.btn-31:hover::before {
+  --progress: 0%;
+}
+
+/* 🔥 TEXT TURNS BLACK */
+.btn-31:hover {
+  color: black;
+}
+
+.btn-text {
+  position: relative;
+  z-index: 10;
+}
+
+.btn-31:hover .btn-text {
+  animation: moveUp 0.3s ease forwards;
+}
+
+@keyframes moveUp {
+  0% { transform: translateY(0); }
+  50% { transform: translateY(80%); }
+  51% { transform: translateY(-80%); }
+  100% { transform: translateY(0); }
+}
